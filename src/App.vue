@@ -7,8 +7,8 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink :to="{ name: 'event-list' }">Events</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink>
+          <RouterLink :to="{ name: 'EventList' }">Events</RouterLink> |
+          <RouterLink :to="{ name: 'About' }">About</RouterLink>
         </nav>
       </div>
     </header>
@@ -33,6 +33,10 @@ nav a {
 }
 nav a.router-link-exact-active {
   color: #42b983;
+}
+nav a.disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
 h2 {
   font-size: 1.25rem;
