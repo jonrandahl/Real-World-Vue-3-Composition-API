@@ -43,7 +43,7 @@ onMounted(() => {
         <router-link :to="{ name: 'EventList', query: { page: page - 1 } }" v-if="page != 1">&#60; Prev</router-link>
       </span>
       <span>
-        | Page {{ page }} |
+        Page {{ page }}
       </span>
       <span>
         <router-link :to="{ name: 'EventList', query: { page: page + 1 } }" v-if="hasNextPage">Next &#62;</router-link>
@@ -54,30 +54,4 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.events {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pagination {
-  display: grid;
-  grid-template-columns: 90px 90px 90px;
-  grid-gap: 10px;
-  ;
-  width: 290px;
-
-  a {
-    text-decoration: none;
-    color: #2c3e50;
-
-    &:first-of-type {
-      text-align: left;
-    }
-
-    &:last-of-type {
-      text-align: right;
-    }
-  }
-}
 </style>
