@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
+import router from '@/router'
 import EventService from '@/services/EventService.ts'
 import { onMounted, ref, computed, watchEffect } from 'vue'
+import { Z_UNKNOWN } from 'zlib'
 
 const totalEvents = ref(0) // Store the total events
 
@@ -20,17 +22,18 @@ const hasNextPage = computed(() => {
 })
 
 onMounted(() => {
-  try {
-    watchEffect(async () => {
-      const response = await EventService.getEvents(2, page.value)
-      events.value = response.data
-      // our response has total stored in the header.
-      totalEvents.value = response.headers['x-total-count']
-    })
-  } catch (error) {
-    console.error(error)
-  }
-})
+  watchEffect(() => {
+    events.value = null;
+    EventService.getEvents(2, page.value)
+      .then((response) => {
+        events.value = response.data;
+        totalEvents.value = response.headers["x-total-count"];
+      })
+      .catch(() => {
+        router.push({ name: 'NetworkError' })
+      });
+  });
+});
 </script>
 
 <template>

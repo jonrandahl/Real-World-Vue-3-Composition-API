@@ -2,12 +2,12 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const props = defineProps({
-  event: {
-    type: Object,
-    required: true,
-  },
-})
+// const props = defineProps({
+//   event: {
+//     type: Object,
+//     required: true,
+//   },
+// })
 
 const register = () => {
   // If registration API call is successful
